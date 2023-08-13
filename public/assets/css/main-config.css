@@ -1,0 +1,246 @@
+/*---------- CUSTOM PROPERTIES ----------*/
+:root {
+  --first-color: #0A2E4B;
+  --second-color: #8CB3FF;
+  --third-color: #88DAF2;
+  --fourth-color: #0D0329;
+  --fifth-color: #0085FF;
+
+  --red-color: #DD092D;
+  --dark-red-color: #89051B;
+  --light-red-color: #EA687E;
+
+  --gold-color: #F2E038;
+  --green-color: #14AD11;
+  --digital-green-color: #5BF213;
+
+  --white-color: #F4EEF2;
+  --white-alpha-color: rgba(255, 255, 255, 0.3);
+  --white-alpha-color-plus: rgba(255, 255, 255, 0.7);
+
+  --black-color: #000;
+  --black-alpha-color: rgba(0, 0, 0, 0.5);
+
+  --gray-color: #2A2F34;
+
+  --second-text-color: #979797;
+
+  --font: 'Inter', sans-serif;
+  --font-italic: 'Inter Tight', sans-serif;
+
+  --navbar-height: 5rem;
+}
+
+/*---------- RESET -----------*/
+
+::selection {
+  background: var(--first-color);
+  color: var(--white-color);
+}
+
+html {
+  box-sizing: border-box;
+  font-family: var(--font);
+  font-size: 16px;
+  line-height: 1.5;
+  scroll-behavior: smooth;
+}
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: inherit;
+}
+
+::before,
+::after {
+  --tw-content: '';
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  max-width: 100vw;
+  width: 100vw;
+  overflow-x: hidden;
+  line-height: inherit;
+  background-color: var(--third-color);
+}
+
+
+h1 {
+  margin: 0;
+  font-size: 2.25rem;
+  font-weight: 900;
+  line-height: 1.1;
+  font-family: var(--font);
+}
+
+h2 {
+  margin: 0;
+  font-size: 1.7rem;
+  font-weight: 900;
+}
+
+h3 {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 900;
+  line-height: 1.2;
+}
+
+h4 {
+  margin: 0;
+  font-size: 1.5rem;
+  line-height: .8;
+}
+
+h5 {
+  margin: 0;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+h6 {
+  font-size: .9rem;
+  margin: 0;
+  font-size: 0.7rem;
+}
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+  font-weight: 700;
+  transition: all .1s linear;
+}
+
+p {
+  font-family: var(--font);
+  line-height: 1.6;
+}
+
+/* ::-webkit-scrollbar {
+	display: none;
+} */
+
+/*----------- ABSOLUTES ----------*/
+
+.mr {
+  border: 5px solid red;
+}
+
+.layout {
+  width: 90%;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.disabled {
+  display: none;
+}
+
+
+
+.btn {
+  border-radius: .4rem;
+  padding: .6rem 1.5rem;
+  display: inline-block;
+  min-width: 12rem;
+  font-weight: bolder;
+  text-align: center;
+  text-decoration: none;
+  color: var(--white-color);
+  box-shadow: 6px 6px 6px 0px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  border: 2px solid var(--second-color);
+}
+
+.btn-1 {
+  background-color: var(--first-color);
+}
+
+.btn-2 {
+  background-color: var(--second-color);
+}
+
+.btn-1:hover {
+  background-color: var(--second-color);
+}
+
+.btn-2:hover {
+  background-color: var(--first-color);
+}
+
+
+.txtw {
+  color: var(--white-color);
+}
+
+.txtb {
+  color: var(--first-color);
+}
+
+.txtg {
+  color: var(--second-color);
+}
+
+
+.justify {
+  text-align: justify;
+}
+
+.ta-r {
+  text-align: right;
+}
+
+.ta-c {
+  text-align: center;
+}
+
+.ta-l {
+  text-align: left;
+}
+
+
+.fzs {
+  font-size: 12px;
+}
+
+.fzm {
+  font-size: 20px;
+}
+
+.fzl {
+  font-size: 32px;
+}
+
+
+.zind {
+  z-index: 10;
+}
+
+.br {
+  border-radius: .4rem;
+}
+
+.round {
+  height: 2.4rem;
+  border-radius: 1.5rem;
+  padding: .4rem;
+  min-width: 7rem;
+
+  box-shadow: 4px 4px 4px 0 rgba(0, 0, 0, 0.25);
+}
+
+/*-----VENTANA NOTIFICACIONES-----*/
+
+.form-rest {
+  left: 0;
+  bottom: 0;
+  position: absolute;
+  width: 100%;
+  padding: 2rem;
+}
