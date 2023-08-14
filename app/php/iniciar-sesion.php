@@ -7,33 +7,36 @@
 
 //VERIFICANDO CAMPOS OBLIGATORIOS
   if($user=="" || $pswd==""){
-    echo '
+    echo json_encode([
+      'message' => '
       <div class="">
         <strong>Ocurrio un error inesperdado</strong><br>
         ASEGURATE DE LLENAR TODOS LOS CAMPOS
       </div>
-    ';
+    ']);
     exit();
   };
 
 //VERIFICANDO LA INTEGRIDAD DE LOS DATOS
   if(verificar_datos("[a-zA-Z0-9]{4,20}", $user)){
-    echo '
+    echo json_encode([
+      'message' => '
       <div class="">
         <strong>Ocurrio un error inesperdado</strong><br>
         EL NOMBRE NO CUMPLE CON EL FORMATO SOLICITADO
       </div>
-    ';
+    ']);
     exit();
   };
 
   if(verificar_datos("[a-zA-Z0-9$@.-]{7,100}", $pswd)){
-    echo '
+    echo json_encode([
+      'message' => '
       <div class="">
         <strong>Ocurrio un error inesperdado</strong><br>
         LA CONTRASEÑA NO CUMPLE CON LOS REQUERIMIENTOS SOLICITADOS POR LA PAGINA
       </div>
-    ';
+    ']);
     exit();
   };
 
@@ -45,44 +48,28 @@
   if($check_user->rowCount()==1){
     $check_user=$check_user->fetch();
 
-    // ASI QUEDA CUANDO YA LAS CONTRASENIAS E USUARIOS SE REGISTRAN CON LA ENCRIPTACION DE PSWD
-    // if($check_user['user_name'] == $usuario && password_verify($clave,$check_user['usuario_clave'])){
-    if($check_user['user_userName'] == $user && $check_user['user_password'] == $pswd){
+    if($check_user['user_userName'] == $user && password_verify($pswd,$check_user['user_password'])){
       session_start();
 
       $_SESSION['id'] = $check_user['user_id'];
-      $_SESSION['nombre'] = $check_user['user_name'];
-      $_SESSION['lastName'] = $check_user['user_lastName'];
       $_SESSION['userName'] = $check_user['user_userName'];
-
-
-      //MANEJO DE CABECERAS EN PHP O JS, PERO LO MANEJO DIRECTAMENTE EN EL FETCH 
-      // header("location: ../../public/index.php?view=homepage");
-      // exit();
-
-      // if(headers_sent()){
-      //   echo "<script> window.location.href='../../public/index.php?view=homepage'; </script>";
-      // }else{
-      //   header("location: ../../public/index.php?view=homepage");
-      // }
+      $_SESSION['email'] = $check_user['user_email'];
 
       echo json_encode(['success' => true]);
       exit();
 
     }else{
-      echo json_encode(['success' => false, 
-      'message' => 
-      '<div class="">
+      echo json_encode([
+      'message' => '<div class="">
           USUARIO O CLAVE INCORRECTOS
-      </div>'  
-    ]);
+      </div>'])
+    ;
     }
   }else{
-    echo json_encode(['success' => false, 
-      'message' => 
-      '<div class="">
+    echo json_encode([
+      'message' => '<div class="">
         EL USUARIO NO SE ENCUENTRA REGISTRADO
-      </div>'  
-    ]);
+      </div>'])
+    ;
   }
   $check_user = null;

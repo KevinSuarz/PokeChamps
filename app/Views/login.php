@@ -17,17 +17,13 @@
           <input class="login__password-input" type="password" name="login_pswd" pattern="[a-zA-Z0-9$@.-]{7,100}" maxlength="100" required>
         </div>
     </div>
-
     <p class="has-text-centered mb-4 mt-3">
-      <button type="submit" class="button is-info is-rounded">LOGIN</button>
+      <button type="submit" class="login__submit">LOGIN</button>
     </p>
 
-    <?php 
-      if(isset($_POST['login_usuario']) && isset($_POST['login_clave'])){
-        require_once '../app/Config/main.php';
-        require_once '../app/config/iniciar-sesion.php';
-      }
-    ?>
+    <a href="index.php?view=register" class="login__register">
+      no tienes cuenta? registrate
+    </a>
   </form>
 
   </div>

@@ -50,6 +50,17 @@
   transform: skewX(-35deg);
 }
 
+.navbar__logout {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--red-color);
+  border-radius: .5rem;
+  box-shadow: 4px 4px 4px 0 rgba(0, 0, 0, 0.25);
+}
+
 /*Pokeball Counter*/
 
 .navbar__pokeballs {
@@ -96,6 +107,28 @@
   text-align: center;
 }
 
+
+/*register*/
+
+.register {
+  position: relative;
+  margin-top: 80px;
+  width: 100%;
+  max-width: 100%;
+  height: calc(100vh - 80px);
+  max-height: 100vh;
+}
+
+.register__layout {
+  width: 90%;
+  max-width: 1440px;
+  margin: 0 auto;
+  height: 100%;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 /*Homepage-hero*/
 
@@ -175,22 +208,27 @@
   border-radius: .5rem;
 }
 
-.navigation__item-home{
+.navigation__item-home {
   color: var(--fifth-color);
 }
-.navigation__item-cards{
+
+.navigation__item-cards {
   color: var(--first-color);
 }
-.navigation__item-multiplayer{
+
+.navigation__item-multiplayer {
   color: var(--first-color);
 }
-.navigation__item-pokedex{
+
+.navigation__item-pokedex {
   color: var(--red-color);
 }
-.navigation__item-stats{
+
+.navigation__item-stats {
   color: var(--gold-color);
 }
-.navigation__item-profile{
+
+.navigation__item-profile {
   color: var(--green-color);
 }
 
@@ -207,4 +245,54 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#message {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.container {
+  flex: 1;
+  background-color: rgb(29, 107, 9);
+  border-radius: 10px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 250px;
+}
+
+.container img {
+  width: 220px;
+  border-radius: 50%;
+}
+
+.container h1 {
+  text-align: center;
+  color: white;
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }

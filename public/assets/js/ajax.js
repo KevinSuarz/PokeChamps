@@ -33,6 +33,8 @@ function enviar_formulario_ajax(e) {
         let contenedor = document.querySelector(".form-rest");
         if (respuesta.success){
           window.location.href = '../public/index.php?view=homepage';
+        } else if(respuesta.register) {
+          window.location.href = "../public/index.php?view=login";
         } else {
           contenedor.innerHTML = respuesta.message;
         }
