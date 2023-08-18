@@ -235,6 +235,11 @@ p {
   box-shadow: 4px 4px 4px 0 rgba(0, 0, 0, 0.25);
 }
 
+.df {
+  display: flex;
+  justify-content: space-between;
+}
+
 /*-----VENTANA NOTIFICACIONES-----*/
 
 .form-rest {

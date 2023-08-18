@@ -310,7 +310,7 @@
 
 .pokeList__card:hover {
   transform: translateX(-5px);
-  box-shadow: 5px 5px 4px  rgba(0, 0, 0, .2);
+  box-shadow: 5px 5px 4px rgba(0, 0, 0, .2);
 }
 
 .pokeCard__sprite {
@@ -359,4 +359,129 @@
   display: flex;
   justify-content: space-between;
   background-color: beige;
+}
+
+/* PROFILE */
+
+.profile {
+  position: relative;
+  margin-top: 80px;
+  width: 100%;
+  max-width: 100%;
+  height: calc(100vh - 80px);
+  max-height: 100vh;
+}
+
+.profile__layout {
+  width: 90%;
+  height: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.profile__info {
+  height: 400px;
+  padding: 1.5rem;
+  display: flex;
+  gap: 1rem;
+  background-color: var(--fourth-color);
+  border-radius: 1rem;
+  color: var(--white-color);
+}
+
+.profile__info-foto {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  border-right: 1px solid var(--white-alpha-color);
+}
+
+.profile__info-fotoIMG {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background-color: beige;
+  border: 5px solid var(--first-color);
+  overflow: hidden;
+}
+
+.profile__info-status {
+  max-width: 90%;
+  margin: 1rem 0;
+  padding: .5rem;
+  background-color: var(--second-text-color);
+  border-radius: 0 .3rem .3rem .3rem;
+}
+
+.profile__info-trophies {
+  width: 90%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.profile__info-points {
+  display: flex;
+  align-items: flex-end;
+}
+
+.profile__info-fotoIMG img{
+  max-width: 100%;
+}
+
+.profile__info-changes {
+  flex: 1;
+}
+
+.profile__stats {
+  height: 400px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--fourth-color);
+  border-radius: 1rem;
+}
+
+.profile__stats-stats {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.profile__stats-item {
+  color: white;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.profile__stats-pokemons {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.profile__stats-img {
+  max-width: 70%;
+}
+
+.update__form {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.update__buttons {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
 }

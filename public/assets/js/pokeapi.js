@@ -53,7 +53,6 @@ document.addEventListener("DOMContentLoaded", () => {
   fetchPokeCard(randomID);
 });
 
-
 pokeList.addEventListener("click", (e) => {
   const card = e.target.closest(".pokeList__card");
   if (card) {
