@@ -32,7 +32,8 @@ $status = limpiar_cadena($_POST['update_status']);
 $pswd = limpiar_cadena($_POST['update_pswd']);
 $pswdR  = limpiar_cadena($_POST['update_pswdR']);
 
-if(verificar_datos("[a-zA-ZáéíóúÁÉÍÓÚñÑ]{4,20}", $userName)){
+if($userName != ""){
+  if(verificar_datos("[a-zA-ZáéíóúÁÉÍÓÚñÑ]{4,20}", $userName)){
   echo json_encode([
     'message' => 
     '<div class="notification is-danger is-light">
@@ -41,7 +42,9 @@ if(verificar_datos("[a-zA-ZáéíóúÁÉÍÓÚñÑ]{4,20}", $userName)){
     </div>'
   ]);
   exit();
+  };
 };
+
 
 // if(verificar_datos("[a-zA-ZáéíóúÁÉÍÓÚñÑ]{4,20}", $status)){
 //   echo json_encode([
@@ -80,11 +83,13 @@ if($email!="" && $email!=$data['user_email']){
       ]);
       exit();
   }
+}else {
+  $email = $data['user_email'];
 }
 
-if($userName != $data['user_userName']){
+if($userName!="" && $userName != $data['user_userName']){
   $check_user = conection();
-  $check_user = $check_user->query("SELECT user_userName FROM users WHERE user_userName ='$user'");
+  $check_user = $check_user->query("SELECT user_userName FROM users WHERE user_userName ='$userName'");
   if($check_user->rowCount() > 0){
     echo json_encode([
         'message' => 
@@ -96,6 +101,8 @@ if($userName != $data['user_userName']){
       exit();
   }
   $check_user = null;
+}else {
+  $userName = $data['user_userName'];
 }
 
 //VERIFICANDO CLAVES
@@ -128,14 +135,79 @@ if($pswd !="" && $pswdR !=""){
 }
 
 
+  //DIRECTORIO DE IMAGENES
+  $img_dir = "../images/profile-pics/";
+
+  //COMPROBAR SI SELECCIONO UNA IMAGEN
+  if($_FILES['update__pic']['name']!="" && $_FILES['update__pic']['size']>0){
+    
+    //CREANDO EL DIRECTORIO DE IMAGENES
+    if(!file_exists($img_dir)){
+      if(!mkdir($img_dir,0777)){
+        echo json_encode([
+          'message' =>
+          '<div class="notification is-danger is-light">
+            <strong>Ocurrio un error inesperdado</strong><br>
+            ERROR AL CREAR EL DIRECTORIO
+          </div>'
+        ]);
+        exit();
+      }
+    }
+
+    //VERIFICANDO EL FORMATO DE LAS IMAGENES
+    if(
+      mime_content_type($_FILES['update__pic']['tmp_name'])!="image/jpeg" &&
+      mime_content_type($_FILES['update__pic']['tmp_name'])!="image/png"
+      ){
+      echo json_encode([
+        'message' =>
+        '<div class="notification is-danger is-light">
+          <strong>Ocurrio un error inesperdado</strong><br>
+          LA IMAGEN QUE HA SELECCIONADO NO TIENE UN FORMATO PERMITIDO
+        </div>
+      ']);
+      exit();
+    }
+
+    //EXTENSION DE LA IMAGEN
+    switch(mime_content_type($_FILES['update__pic']['tmp_name'])){
+      case 'image/jpeg':
+        $img_ext = ".jpg";
+      break;
+      case 'image/png':
+        $img_ext = ".png";
+      break;
+    }
+    chmod($img_dir,0777);
+    $picName = $userName;
+    $pic = $picName.$img_ext;
+
+    //MOVIENDO IMAGEN AL DIRECTORIO
+    if(!move_uploaded_file($_FILES['update__pic']['tmp_name'],$img_dir.$pic)){
+      echo json_encode([
+        'message' =>
+        '<div class="notification is-danger is-light">
+            <strong>Ocurrio un error inesperdado</strong><br>
+            NO SE PUDO CARGAR LA IMAGEN, VUELVA A INTENTARLO
+          </div>'
+      ]);
+      exit();
+    };
+  }else{
+    $pic = "";
+  }
+
+
 //ACTUALIZAR DATOS
 $user_update = conection();
-$user_update = $user_update->prepare("UPDATE users SET user_userName =:nombre, user_password =:clave, user_email=:email WHERE user_id=:id");
+$user_update = $user_update->prepare("UPDATE users SET user_userName =:nombre, user_password =:clave, user_email=:email, user_profilePic=:foto WHERE user_id=:id");
 
 $marcadores =[
   ":nombre" => $userName,
   ":clave" => $password,
   ":email" => $email,
+  ":foto" => $pic,
   "id" => $id
 ];
 

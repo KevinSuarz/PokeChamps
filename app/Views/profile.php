@@ -16,6 +16,7 @@
       <div class="profile__info-foto">
         <div class="profile__info-fotoIMG">
           <img src="assets/images/profile.webp" alt="" class="profile__info-IMG">
+          <input type="file" name="update__pic" accept="image/*" class="update__pic" form="update__form">
         </div>
         <h4><strong><?php echo $_SESSION['userName'];?></strong>#<?php echo $_SESSION['id'];?></h4>
         <div class="profile__info-status">
@@ -35,7 +36,7 @@
         </div>
       </div>
       <div class="profile__info-changes">
-        <form class="login__form update__form" action="../app/php/actualizar-usuario.php" method="POST" autocomplete="off">
+          <form id="update__form" class="login__form update__form" action="../app/php/actualizar-usuario.php" method="POST" autocomplete="off">
 		      <input type="hidden" value = "<?php echo $data['user_id']; ?>" name="user_id" required>
 
           <div class="update__username df">
@@ -48,7 +49,7 @@
           <div class="update__email df">
             <label class="update__email-label">EMAIL</label>
             <div class="update__email-field">
-              <input class="update__email-input" type="text" name="update_email" pattern="" maxlength="40" placeholder="<?php echo $data['user_email'];?>">
+              <input class="update__email-input" type="text" name="update_email" maxlength="40" placeholder="<?php echo $data['user_email'];?>">
             </div>
           </div>
 
@@ -73,11 +74,11 @@
           </div>
           <div class="update__buttons">
             <button type="submit" class="update__submit">
-              <i class="fa-solid fa-circle-check"></i>
+              <i class="fa-solid fa-circle-check fzm"></i>
               SAVE CHANGES
             </button>
-            <button type="reset" value="reset">
-              <i class="fa-solid fa-circle-xmark"></i>
+            <button type="reset" value="reset" class="update__discard">
+              <i class="fa-solid fa-circle-xmark fzm"></i>
               DISCARD CHANGES
             </button>
           </div>
