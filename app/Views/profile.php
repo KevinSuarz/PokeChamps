@@ -15,7 +15,18 @@
     <div class="profile__info">
       <div class="profile__info-foto">
         <div class="profile__info-fotoIMG">
-          <img src="assets/images/profile.webp" alt="" class="profile__info-IMG">
+          <?php
+            if($data['user_profilePic'] != ""){
+              echo '
+                <img src="../app/images/profile-pics/'.$data['user_profilePic'].'" alt="" class="profile__info-IMG">
+              ';
+            }else{
+              echo '
+                <img src="assets/images/profile.webp" alt="" class="profile__info-IMG">
+              ';
+            };
+          ?>
+          
           <input type="file" name="update__pic" accept="image/*" class="update__pic" form="update__form">
         </div>
         <h4><strong><?php echo $_SESSION['userName'];?></strong>#<?php echo $_SESSION['id'];?></h4>

@@ -140,7 +140,7 @@ if($pswd !="" && $pswdR !=""){
 
   //COMPROBAR SI SELECCIONO UNA IMAGEN
   if($_FILES['update__pic']['name']!="" && $_FILES['update__pic']['size']>0){
-    
+
     //CREANDO EL DIRECTORIO DE IMAGENES
     if(!file_exists($img_dir)){
       if(!mkdir($img_dir,0777)){
@@ -195,7 +195,7 @@ if($pswd !="" && $pswdR !=""){
       exit();
     };
   }else{
-    $pic = "";
+    $pic = $data['user_profilePic'];
   }
 
 
