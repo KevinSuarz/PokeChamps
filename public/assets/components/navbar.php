@@ -7,10 +7,6 @@
     </div>
 
     <div class="navbar__content">
-      <!-- <a href="index.php?view=logout" class="navbar__logout">
-              <i class="fa-solid fa-right-from-bracket txtw fzl"></i>
-            </a> -->
-
       <?php
         if(isset($_SESSION['id']) && isset($_SESSION['email']) && isset($_SESSION['userName'])){
           echo '
