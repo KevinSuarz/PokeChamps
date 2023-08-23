@@ -45,3 +45,10 @@ function enviar_formulario_ajax(e) {
 formularios_ajax.forEach((formularios) => {
   formularios.addEventListener("submit", enviar_formulario_ajax);
 });
+
+
+document
+  .querySelector(".hero__timer-lock")
+  .addEventListener("click", () => {
+    window.location.href = "index.php?view=openCard";
+  });
