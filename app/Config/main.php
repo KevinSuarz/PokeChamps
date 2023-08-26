@@ -44,3 +44,4 @@
 		$cadena=stripslashes($cadena);
 		return $cadena;
   }
+?>

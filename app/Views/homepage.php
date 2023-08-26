@@ -37,4 +37,5 @@
     
   </div>
   </div>
+  <script src="assets/js/clickOpenCard.js"></script>
 </section>
