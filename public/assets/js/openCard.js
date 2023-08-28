@@ -43,7 +43,7 @@ function getRandomPokemonID() {
               <p>id: ${cardData.cardID}</p>
               <img src="${cardData.cardSprite}"></img>
             `;
-            console.log(responseData.html);
+            console.log(responseData.message);
           });
         
       } else {

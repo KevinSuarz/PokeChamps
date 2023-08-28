@@ -1,11 +1,12 @@
 <?php
 require_once "../Config/main.php";
-require_once '../Config/session_start.php'; 
+session_start();
 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
     $data = json_decode(file_get_contents("php://input"), true);
+
   
     if ($data == null) {
         http_response_code(400);
@@ -16,25 +17,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       $userID = $_SESSION['id'];
     }
 
-    $newCard = conection();
-    $newCard = $newCard->prepare(
-      "INSERT INTO user_pokemons (user_id, pokemons_id) VALUES (:userID, :pokeID)"
-    );
-
-    $marcadores =[
-      ":pokeID" => $pokeID,
-      ":userID" => $userID
-    ];
-    
-    $newCard->execute($marcadores);
-
-    if($newCard->rowCount()==1){
-      echo json_encode($pokeID);
-
-    }else{
-      echo json_encode($pokeID);
+    $conn = mysqli_connect('localhost', 'root', '', 'pokechamps');
+    $sql = "INSERT INTO pokemons (user_id, pokemons_cards) VALUES ($userID, $pokeID)";
+    if (mysqli_query($conn, $sql)) {
+      echo json_encode(['message' => 'pokemon registrado con exito']);
+    } else {
+      echo json_encode(['message' => 'Error: ' . mysqli_error($conn)]);
     }
-    $newCard = null;
+    mysqli_close($conn);
 
 } else {
   http_response_code(405);
