@@ -16,3 +16,10 @@ CREATE TABLE pokemons (
   user_id INT NOT NULL,
   FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
+
+CREATE TABLE PokeButton (
+    pokeButton_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    last_click TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
+);

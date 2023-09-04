@@ -5,23 +5,27 @@
   <div class="hero__timer">
     <?php 
       if(isset($_SESSION['id']) && isset($_SESSION['userName']) && isset($_SESSION['email'])){
-        echo'
-          <div>
-            <h4>OPEN IT</h4>
-          </div>
-          <a class="hero__timer-lock">
-            <i class="fa-solid fa-unlock"></i>
-          </a>
-        ';
-
-        // <div>
-        //   <p>next card in</p>
-        //   <h4>20:15:06</h4>
-        // </div>
-        // <a class="hero__timer-lock">
-        //   <i class="fa-solid fa-lock"></i>
-        // </a>
-
+        require_once '../app/php/24Button.php';
+        if($timed==1){
+          echo'
+            <div>
+              <p>next card in</p>
+              <h4 class="timer_js">20:15:07</h4>
+            </div>
+            <a class="hero__timer-lock">
+              <i class="fa-solid fa-lock"></i>
+            </a>
+          ';
+        }else{
+          echo'
+            <div>
+              <h4>puse 0</h4>
+            </div>
+            <a class="hero__timer-lock hero__timer-unlock">
+              <i class="fa-solid fa-unlock"></i>
+            </a>
+          ';
+        }
       }else {
         echo'
           <div>
@@ -33,9 +37,8 @@
         ';
       }
     ?>
-
-    
   </div>
   </div>
   <script src="assets/js/clickOpenCard.js"></script>
+  <script src="assets/js/backwardstimer.js"></script>
 </section>

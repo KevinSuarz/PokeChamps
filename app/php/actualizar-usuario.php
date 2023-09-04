@@ -46,18 +46,6 @@ if($userName != ""){
 };
 
 
-// if(verificar_datos("[a-zA-ZáéíóúÁÉÍÓÚñÑ]{4,20}", $status)){
-//   echo json_encode([
-//     'message' => 
-//     '<div class="notification is-danger is-light">
-//       <strong>Ocurrio un error inesperdado</strong><br>
-//       EL ESTADO NO CUMPLE CON EL FORMATO SOLICITADO
-//     </div>'
-//   ]);
-//   exit();
-// };
-
-
 if($email!="" && $email!=$data['user_email']){
   if(filter_var($email, FILTER_VALIDATE_EMAIL)){
     $check_email = conection();
